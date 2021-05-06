@@ -8,8 +8,8 @@ const app = express();
 app.set('view engine', 'ejs');
 app.set('views', 'views');
 
-const books = require('./routes/books');
-const index = require('./routes/index');
+const books = require('./routes/routesProve/books');
+const index = require('./routes/routesProve/index');
 
 app.use(bodyParser.urlencoded({ extended: false }));
 

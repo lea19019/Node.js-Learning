@@ -12,6 +12,7 @@ router.get('/', (req, res, next) => {
   res.render('index', { 
     books: books,
     pageTitle: 'Home',
+    path: '/',
   });
 });
 
