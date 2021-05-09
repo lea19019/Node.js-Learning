@@ -1,20 +1,10 @@
-const path = require('path');
+const routes = require('express').Router();
 
-const express = require('express');
+routes
+    .use('/prove02', require('./prove02'))
 
-const rootDir = require('../../util/path');
-const booksData = require('./books');
-
-const router = express.Router();
-
-router.get('/', (req, res, next) => {
-  const books = booksData.books;
-  res.render('index', { 
-    books: books,
-    pageTitle: 'Home',
-    path: '/',
-  });
-});
+module.exports = routes;
 
 
-module.exports = router;
+
+

@@ -2,7 +2,7 @@ const path = require('path');
 
 const express = require('express');
 
-const rootDir = require('../../util/path');
+const rootDir = require('../../../util/path');
 
 const router = express.Router();
 
@@ -18,7 +18,7 @@ router.get('/books', (req, res, next) => {
 router.post('/add-book', (req, res, next) => {
   books.push({ title: req.body.title, summary: req.body.summary });
   console.log(books);
-  res.redirect('/books');
+  res.redirect('/proveActivities/prove02');
 });
 
 exports.routes = router;
