@@ -4,25 +4,25 @@
     <nav class="main-header__nav">
         <ul class="main-header__item-list">
             <li class="main-header__item">
-                <a href="/">Main Home</a>
+                <a href="/">Home</a>
             </li>
             <li class="main-header__item">
                 <a class="<%= path === '/products' ? 'active' : '' %>" href="/project/">Products</a>
             </li>
-
             <li class="main-header__item">
                 <a class="<%= path === '/admin/add-product' ? 'active' : '' %>" href="/project/admin/add-product">Add
                     Product
                 </a>
             </li>
+
         </ul>
     </nav>
 </header>
 
 <nav class="mobile-nav">
     <ul class="mobile-nav__item-list">
-        <li class="mobile-nav__item">
-            <a href="/">Main Shop</a>
+        <li class="main-header__item">
+            <a href="/">Home</a>
         </li>
         <li class="mobile-nav__item">
             <a class="<%= path === '/products' ? 'active' : '' %>" href="/project/">Products</a>
@@ -32,5 +32,6 @@
                 Product
             </a>
         </li>
+
     </ul>
 </nav>
