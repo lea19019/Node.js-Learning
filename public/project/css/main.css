@@ -23,6 +23,14 @@ form {
   text-align: center;
 }
 
+.image {
+  height: 20rem;
+}
+
+.image img {
+  height: 100%;
+}
+
 .main-header {
   width: 100%;
   height: 3.5rem;
@@ -166,10 +174,6 @@ form {
 }
 
 .card__image img {
-  max-height: 250px;
-}
-
-.card__image img {
   width: 100%;
 }
 
@@ -201,8 +205,15 @@ form {
   color: white;
 }
 
-.imageDetail {
-  max-width: 50%;
+.btn.danger {
+  color: red;
+  border-color: red;
+}
+
+.btn.danger:hover,
+.btn.danger:active {
+  background: red;
+  color: white;
 }
 
 @media (min-width: 768px) {
