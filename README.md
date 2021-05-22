@@ -1,8 +1,7 @@
-# NodeJS_Template
+# Node.js Project CSE-341
 
-This application was originally a barebones template of [node-js-getting-started](https://github.com/heroku/node-js-getting-started) provided by Heroku. It has been revised to accomodate the needs of students taking the CSE341 course at BYU-Idaho. 
+Repository containing my learning and projects while studying Node.js, you can visit my site at [Adrian's Node.js Website](https://cse341-node-lea19019.herokuapp.com/) published on heroku.
 
-Below are instructions provided by the original Heroku repository: 
 ## Running Locally
 
 Make sure you have [Node.js](http://nodejs.org/) and the [Heroku CLI](https://cli.heroku.com/) installed.
