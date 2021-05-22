@@ -75,14 +75,15 @@ exports.postSignup = (req, res, next) => {
     const password = req.body.password;
     const confirmPassword = req.body.confirmPassword;
 
+    if (!email && !password && !confirmPassword) {
+        req.flash('error', 'Please fill all the form.');
+        return res.redirect('/project/signup');
+    }
+
     User.findOne({ email: email })
         .then(userDoc => {
             if (userDoc) {
                 req.flash('error', 'E-mail exist already, please pick a different one.')
-                return res.redirect('/project/signup');
-            }
-            else if (!userDoc) {
-                req.flash('error', 'Please fill in the form.')
                 return res.redirect('/project/signup');
             }
             return bcrypt.hash(password, 12)
