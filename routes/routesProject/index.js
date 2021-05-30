@@ -10,6 +10,7 @@ const mongoDBStore = require('connect-mongodb-session')(session);
 const csrf = require('csurf');
 const flash = require('connect-flash');
 
+const errorController = require('./controllers/error');
 
 const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://vicente:Ackerman1@cse341-node.1oyuy.mongodb.net/shop?retryWrites=true&w=majority';
 
@@ -35,10 +36,13 @@ routes.use((req, res, next) => {
     }
     User.findById(req.session.user._id)
         .then(user => {
+            if (!user) {
+                return next();
+            }
             req.user = user;
             next();
         })
-        .catch(err => console.log(err));
+        .catch(err => { next(new Error(err)) });
 });
 
 routes.use((req, res, next) => {
@@ -51,6 +55,12 @@ routes.use((req, res, next) => {
 routes.use('/admin', adminRoutes);
 routes.use(shopRoutes);
 routes.use(authRoutes);
+
+routes.get('/500', errorController.get500);
+routes.use(errorController.get404);
+routes.use((error, req, res, next) => {
+    res.redirect('/500');
+})
 
 
 
