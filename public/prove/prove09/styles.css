@@ -1,0 +1,25 @@
+body {
+    background-color: rgb(162, 219, 255);
+}
+
+.pokemon {
+    text-align: center;
+    border: solid 2px #343a40;
+    border-radius: 50px;
+    background-color: #e1e2e4;
+    color: rgb(44, 44, 44);
+    width: 35%;
+    margin-top: 3rem;
+}
+
+.logo {
+    width: 5rem;
+    height: 5rem;
+}
+
+#pokeList {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr 1fr 1fr;
+    list-style-type: none;
+}
