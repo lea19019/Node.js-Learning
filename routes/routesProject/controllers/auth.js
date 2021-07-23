@@ -1,8 +1,19 @@
 const crypto = require('crypto');
 const bcrypt = require('bcryptjs');
+const nodemailer = require('nodemailer');
+const sendgridTransport = require('nodemailer-sendgrid-transport');
+const { validationResult } = require('express-validator/check')
 
 const User = require('../models/user');
-const { validationResult } = require('express-validator/check')
+
+// const transporter = nodemailer.createTransport(
+//     sendgridTransport({
+//         auth: {
+//             api_key:
+//                 // Add key!
+//         }
+//     })
+// );
 
 
 exports.getLogin = (req, res, next) => {
@@ -130,10 +141,13 @@ exports.postSignup = (req, res, next) => {
             path: '/signup',
             pageTitle: 'Signup',
             errorMessage: errors.array()[0].msg,
-            oldInput: { email: email, password: password, confirmPassword: req.body.confirmPassword },
+            oldInput: {
+                email: email,
+                password: password,
+                confirmPassword: req.body.confirmPassword
+            },
             validationErrors: errors.array()
         });
-
     }
 
     bcrypt.hash(password, 12)
@@ -147,7 +161,12 @@ exports.postSignup = (req, res, next) => {
         })
         .then(result => {
             res.redirect('/project/auth/login');
-            return
+            return //transporter.sendMail({
+            //     to: email,
+            //     from: 'shop@node-complete.com',
+            //     subject: 'Signup succeeded!',
+            //     html: '<h1>You successfully signed up!</h1>'
+            // }); Currently this function ain't working
         })
         .catch(err => {
             const error = new Error(err);
@@ -190,15 +209,15 @@ exports.postReset = (req, res, next) => {
             })
             .then(result => {
                 res.redirect('/project');
-                transporter.sendMail({
-                    to: req.body.email,
-                    from: 'vicacl945@gmail.com',
-                    subject: 'Password Reset',
-                    html: `
-                    <p>You requested a password reset</p>
-                    <p>Click this <a href="http://localhost:3000/reset/${token}">link</a> to set a new password.</p>
-                    `
-                });
+                // transporter.sendMail({
+                //     to: req.body.email,
+                //     from: 'shop@gmail.com',
+                //     subject: 'Password Reset',
+                //     html: `
+                //     <p>You requested a password reset</p>
+                //     <p>Click this <a href="https://cse341-node-lea19019.herokuapp.com/project/reset/${token}">link</a> to set a new password.</p>
+                //     `
+                // });  Currently resetting password ain't working, it will soon
             })
             .catch(err => {
                 const error = new Error(err);
