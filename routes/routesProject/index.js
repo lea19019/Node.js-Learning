@@ -15,7 +15,7 @@ const multer = require('multer');
 const errorController = require('./controllers/error');
 const User = require('./models/user');
 
-const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://vicente:Ackerman1@cse341-node.1oyuy.mongodb.net/shop?retryWrites=true&w=majority';
+const MONGODB_URL = process.env.MONGODB_URL || 'mongodb+srv://*******:*******@cse341-node.1oyuy.mongodb.net/shop?retryWrites=true&w=majority';
 
 const store = new mongoDBStore({
     uri: MONGODB_URL,
